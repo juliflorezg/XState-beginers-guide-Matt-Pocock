@@ -5,7 +5,14 @@ import React from 'react'
 import { todosMachine } from '../machines/todoAppMachine'
 
 export const Home: NextPage = () => {
-  const [state, send] = useMachine(todosMachine)
+  const [state, send] = useMachine(todosMachine, {
+    services: {
+      loadTodos: async () => {
+        throw new Error('noooooooooooooo')
+        return ['do laundry', 'take bins out']
+      },
+    },
+  })
 
   return (
     <>
