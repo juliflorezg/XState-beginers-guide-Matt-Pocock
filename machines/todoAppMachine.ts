@@ -24,6 +24,7 @@ export const todosMachine =
       },
       states: {
         'Loading Todos': {
+          //this invoke is for services machine will call on this state
           invoke: {
             src: 'loadTodos',
             onDone: { target: 'Todos Loaded', actions: 'assignTodosToContext' },
@@ -43,13 +44,19 @@ export const todosMachine =
         // consoleLogTodos: (context, event) => {
         //   alert(JSON.stringify(event.todos))
         // },
+        //* here will use the assign function to assign a value to a element in the context
         assignTodosToContext: assign((context, event) => {
+          console.log({ context })
+          // setTimeout(() => {
+          //   console.log({ context })
+          // }, 1000)
           return {
             todos: event.data,
           }
         }),
         assignErrorToContext: assign((context, event) => {
           return {
+            //* here we have to cast the data as an Error bc TS doesn't recognize its type, then we can go into its properties an extract message
             errorMessage: (event.data as Error).message,
           }
         }),

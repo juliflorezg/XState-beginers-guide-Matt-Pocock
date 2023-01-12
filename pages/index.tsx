@@ -8,7 +8,7 @@ export const Home: NextPage = () => {
   const [state, send] = useMachine(todosMachine, {
     services: {
       loadTodos: async () => {
-        throw new Error('noooooooooooooo')
+        // throw new Error('noooooooooooooo')
         return ['do laundry', 'take bins out']
       },
     },
