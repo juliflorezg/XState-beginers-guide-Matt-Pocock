@@ -16,8 +16,11 @@ export const Home: NextPage = () => {
 
   return (
     <>
-      <div>{JSON.stringify(state.value)}</div>
-      <button
+      <div>
+        <pre>{JSON.stringify(state.value)}</pre>
+        <pre>{JSON.stringify(state.context)}</pre>
+      </div>
+      {/* <button
         onClick={() => {
           send({
             type: 'Todos loaded',
@@ -36,7 +39,7 @@ export const Home: NextPage = () => {
         }}
       >
         Todos failed
-      </button>
+      </button> */}
     </>
   )
 }
